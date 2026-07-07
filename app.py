@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import json 
+import os  # 서버 포트 설정을 읽어오기 위해 추가된 모듈
 
 app = Flask(__name__)
 
@@ -27,4 +28,7 @@ def art_detail(art_id):
         return "존재하지 않는 작품 번호입니다.", 404
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    # 클라우드타입이 지정하는 포트가 있으면 그걸 쓰고, 없으면 기본값(5000)을 쓰도록 똑똑하게 수정
+    port = int(os.environ.get("PORT", 5000))
+    # 실전 서버용이므로 에러 방지를 위해 debug=False로 변경
+    app.run(host='0.0.0.0', port=port, debug=False)
