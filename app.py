@@ -3,14 +3,11 @@ import json
 import os 
 
 app = Flask(__name__)
-
-# ⭐️ [핵심 추가] app.py 파일이 있는 실제 컴퓨터 안의 '절대 주소'를 자동으로 계산합니다.
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 JSON_PATH = os.path.join(BASE_DIR, 'data.json')
 
 @app.route('/art/<int:art_id>')
 def art_detail(art_id):
-    # ⭐️ 계산된 절대 주소(JSON_PATH)를 이용해 파일을 안전하게 열도록 수정했습니다.
     with open(JSON_PATH, 'r', encoding='utf-8') as f:
         art_data = json.load(f)
         
