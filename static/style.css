@@ -1,35 +1,66 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+/* @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"); */
+
+@font-face {
+    font-family: 'Testfont';
+    src: url('BMYEONSUNG_ttf.woff2') format('woff2');
+    /* ttf: truetype, otf:opentype, woff2:woff2 */
+}
 
 html {
-  background-color: #000000;
-  
+    background-color: #000000;
+
 }
 
 body {
-    background-color: #000000;
+    font-family: 'Testfont';
+    /* background-color: #000000; */
     margin: 0;
-    
-    padding: 20px; 
-    
-    min-height: 100vh; 
+
+    padding: 20px;
+
+    min-height: 100vh;
     box-sizing: border-box;
-    
+
     display: flex;
     flex-direction: column;
-    
+
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    /*배경(까만부분) 이미지*/
+    background-image: url('back1.png');
+
+    background-size: 100% 100%;
+    background-position: center;
+
+    z-index: -1;
 }
 
 .container {
     background-color: white;
     width: 100%;
-    max-width: 600px; /* 넓은 화면에서도 너무 퍼지지 않게 제한 */
-    margin: 0 auto;   /* 가로 중앙 정렬 */
-    
-    flex-grow: 1; 
-    
+    max-width: 600px;
+    margin: 0 auto;
+
+    flex-grow: 1;
+
     padding: 20px;
+    padding-bottom: 50px;
     box-sizing: border-box;
     border: 3px solid gray;
+
+    /*설명글(하얀부분) 이미지*/
+    background-image: url('');
+
+    background-size: 100% 100%;
+    background-position: center;
 }
 
 .title-text {
@@ -44,11 +75,18 @@ body {
 }
 
 .sound {
-    margin-top: 50px; 
-    margin-left: auto; 
-    margin-right: auto; 
-    width: 90%; 
+    position: fixed;
+    z-index: 1000;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 540px;
     display: block;
+
+    background: black;
+    padding: 3px;
+    border-radius: 30px;
 }
 
 .image-box {
@@ -58,7 +96,7 @@ body {
 }
 
 .art-image {
-    width: 100%;      
-    max-height: 400px; 
+    width: 100%;
+    /* max-height: 400px;*/
     object-fit: contain;
 }
